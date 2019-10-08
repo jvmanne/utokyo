@@ -11,22 +11,16 @@ def get_matrices():
 def matrix_multiplication_numpy():
     a, b = get_matrices()
     result = a.dot(b)
-    time.sleep(2)
     return result
 
 
 def matrix_multiplication_manually():
     a, b = get_matrices()
-    result = []
+    result = [[0 for _ in range(len(a))] for _ in range(len(b[0]))]
     for i in range(len(a)):
-        row = []
-        for j in range(len(a)):
-            product = 0
-            for k in range(len(a[i])):
-                product += a[i][k] * b[k][j]
-            row.append(product)
-        result.append(row)
-    time.sleep(3)
+        for j in range(len(b[0])):
+            for k in range(len(b)):
+                result[i][j] += a[i][k] * b[k][j]
     return np.array(result)
 
 
