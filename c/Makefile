@@ -18,5 +18,8 @@ $(BINDIR)/$(EXEC): $(OBJFILES)
 $(OBJDIR)/%.o: $(SRCDIR)/%.c
 	$(CC) $(CFLAGS) $(INCL) -c $< -o $@
 
+run:
+	./$(BINDIR)/$(EXEC)
+
 clean:
 	rm -f $(OBJDIR)/*.o $(BINDIR)/*$(EXEC) core *~

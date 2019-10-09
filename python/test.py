@@ -3,7 +3,7 @@ import numpy as np
 
 
 def get_matrices():
-    a = np.array([[3, 6, 7], [5, -3, 0]])
+    a = np.array([[3, 6, 7], [5, -3, 0], [2, 7, 8], [1, 9, 2]])
     b = np.array([[1, 1], [2, 1], [3, -3]])
     return a, b
 
@@ -16,7 +16,7 @@ def matrix_multiplication_numpy():
 
 def matrix_multiplication_manually():
     a, b = get_matrices()
-    result = [[0 for _ in range(len(a))] for _ in range(len(b[0]))]
+    result = [[0 for _ in range(len(b[0]))] for _ in range(len(a))]
     for i in range(len(a)):
         for j in range(len(b[0])):
             for k in range(len(b)):
