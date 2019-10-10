@@ -19,6 +19,7 @@ void small_time_test(void) {
     double total_time = 0.0;
     double shortest_time = 1000000.0;
     double longest_time = 0.0;
+    //okay
     for (int i=0; i<number_of_tests; i++) {
         struct timespec start, end;
         clock_gettime(CLOCK_REALTIME, &start);

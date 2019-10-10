@@ -4,7 +4,9 @@
 #include <time.h>
 
 int number_of_tests = 100000;
-
+// bigger matrices
+// flops
+// random matrices
 int A[4][3] = {
         {3, 6, 7},
         {5, -3, 0},
@@ -17,17 +19,9 @@ int B[3][2] = {
         {3, -3}
 };
 int C[4][2];
-int a_row = sizeof(A)/ sizeof(A[0]);
-int b_col = sizeof(B[0])/ sizeof(B[0][0]);
-int b_row = sizeof(B)/ sizeof(B[0]);
-
-void empty_result(void) {
-    for (int i=0; i<a_row; i++) {
-        for (int j=0; j<b_col; j++) {
-            C[i][j] = 0;
-        }
-    }
-}
+int a_row = 4;
+int b_col = 2;
+int b_row = 3;
 
 void print_result(void) {
     printf("Result matrix:\n");
@@ -42,9 +36,11 @@ void print_result(void) {
 }
 
 void multiplication_test(void) {
+    multiplication_basic_1();
+    print_result();
+
     printf("Basic multiplication 1 - five calculations:\n");
     for (int i = 0; i<5; i++) {
-        empty_result();
         struct timespec start, end;
         clock_gettime(CLOCK_REALTIME, &start);
         multiplication_basic_1();
@@ -52,74 +48,55 @@ void multiplication_test(void) {
         double time_spent = (end.tv_nsec - start.tv_nsec);
         printf("Time elapsed is %f nanoseconds\n", time_spent);
     }
-    print_result();
 
 
     printf("\nBasic multiplication 1-6 - %d calculations:\n", number_of_tests);
 
-    double total_time_1 = 0.0;
+    struct timespec start1, end1;
+    clock_gettime(CLOCK_REALTIME, &start1);
     for (int i=0; i<number_of_tests; i++) {
-        empty_result();
-        struct timespec start, end;
-        clock_gettime(CLOCK_REALTIME, &start);
         multiplication_basic_1();
-        clock_gettime(CLOCK_REALTIME, &end);
-        total_time_1 += (end.tv_nsec - start.tv_nsec);
     }
-    printf("Basic 1 - Time average is %f nanoseconds\n", total_time_1 / number_of_tests);
+    clock_gettime(CLOCK_REALTIME, &end1);
+    printf("Basic 1 - Time average is %ld nanoseconds\n", (end1.tv_nsec - start1.tv_nsec) / number_of_tests);
 
-    double total_time_2 = 0.0;
+    struct timespec start2, end2;
+    clock_gettime(CLOCK_REALTIME, &start2);
     for (int i=0; i<number_of_tests; i++) {
-        empty_result();
-        struct timespec start, end;
-        clock_gettime(CLOCK_REALTIME, &start);
         multiplication_basic_2();
-        clock_gettime(CLOCK_REALTIME, &end);
-        total_time_2 += (end.tv_nsec - start.tv_nsec);
     }
-    printf("Basic 2 - Time average is %f nanoseconds\n", total_time_2 / number_of_tests);
+    clock_gettime(CLOCK_REALTIME, &end2);
+    printf("Basic 2 - Time average is %ld nanoseconds\n", (end2.tv_nsec - start2.tv_nsec) / number_of_tests);
 
-    double total_time_3 = 0.0;
+    struct timespec start3, end3;
+    clock_gettime(CLOCK_REALTIME, &start3);
     for (int i=0; i<number_of_tests; i++) {
-        empty_result();
-        struct timespec start, end;
-        clock_gettime(CLOCK_REALTIME, &start);
         multiplication_basic_3();
-        clock_gettime(CLOCK_REALTIME, &end);
-        total_time_3 += (end.tv_nsec - start.tv_nsec);
     }
-    printf("Basic 3 - Time average is %f nanoseconds\n", total_time_3 / number_of_tests);
+    clock_gettime(CLOCK_REALTIME, &end3);
+    printf("Basic 3 - Time average is %ld nanoseconds\n", (end3.tv_nsec - start3.tv_nsec) / number_of_tests);
 
-    double total_time_4 = 0.0;
+    struct timespec start4, end4;
+    clock_gettime(CLOCK_REALTIME, &start4);
     for (int i=0; i<number_of_tests; i++) {
-        empty_result();
-        struct timespec start, end;
-        clock_gettime(CLOCK_REALTIME, &start);
         multiplication_basic_4();
-        clock_gettime(CLOCK_REALTIME, &end);
-        total_time_4 += (end.tv_nsec - start.tv_nsec);
     }
-    printf("Basic 4 - Time average is %f nanoseconds\n", total_time_4 / number_of_tests);
+    clock_gettime(CLOCK_REALTIME, &end4);
+    printf("Basic 4 - Time average is %ld nanoseconds\n", (end4.tv_nsec - start4.tv_nsec) / number_of_tests);
 
-    double total_time_5 = 0.0;
+    struct timespec start5, end5;
+    clock_gettime(CLOCK_REALTIME, &start5);
     for (int i=0; i<number_of_tests; i++) {
-        empty_result();
-        struct timespec start, end;
-        clock_gettime(CLOCK_REALTIME, &start);
         multiplication_basic_5();
-        clock_gettime(CLOCK_REALTIME, &end);
-        total_time_5 += (end.tv_nsec - start.tv_nsec);
     }
-    printf("Basic 5 - Time average is %f nanoseconds\n", total_time_5 / number_of_tests);
+    clock_gettime(CLOCK_REALTIME, &end5);
+    printf("Basic 5 - Time average is %ld nanoseconds\n", (end5.tv_nsec - start5.tv_nsec) / number_of_tests);
 
-    double total_time_6 = 0.0;
+    struct timespec start6, end6;
+    clock_gettime(CLOCK_REALTIME, &start6);
     for (int i=0; i<number_of_tests; i++) {
-        empty_result();
-        struct timespec start, end;
-        clock_gettime(CLOCK_REALTIME, &start);
         multiplication_basic_6();
-        clock_gettime(CLOCK_REALTIME, &end);
-        total_time_6 += (end.tv_nsec - start.tv_nsec);
     }
-    printf("Basic 6 - Time average is %f nanoseconds\n", total_time_6 / number_of_tests);
+    clock_gettime(CLOCK_REALTIME, &end6);
+    printf("Basic 6 - Time average is %ld nanoseconds\n", (end6.tv_nsec - start6.tv_nsec) / number_of_tests);
 }
