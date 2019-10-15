@@ -1,4 +1,4 @@
-#include "multiplication_test.h"
+#include "matrices.h"
 
 void multiplication_basic_1(void) {
     for (int i=0; i < a_row; i++) {

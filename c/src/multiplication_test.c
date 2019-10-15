@@ -1,4 +1,5 @@
 #include "multiplication_test.h"
+#include "matrices.h"
 #include "multiplication_basic.h"
 #include <stdio.h>
 #include <time.h>
@@ -7,21 +8,6 @@ int number_of_tests = 100000;
 // bigger matrices
 // flops
 // random matrices
-int A[4][3] = {
-        {3, 6, 7},
-        {5, -3, 0},
-        {2, 7, 8},
-        {1, 9, 2}
-};
-int B[3][2] = {
-        {1, 1},
-        {2, 1},
-        {3, -3}
-};
-int C[4][2];
-int a_row = 4;
-int b_col = 2;
-int b_row = 3;
 
 void print_result(void) {
     printf("Result matrix:\n");
