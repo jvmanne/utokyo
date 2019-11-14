@@ -3,6 +3,11 @@
 #include <time.h>
 
 void small_time_test(void) {
+    printf("****************************\n");
+    printf("EMPTY CODE TEST\n");
+    printf("****************************\n\n");
+
+
     int number_of_tests = 100000;
 
     printf("Empty code - five calculations:\n");
@@ -19,7 +24,7 @@ void small_time_test(void) {
     double total_time = 0.0;
     double shortest_time = 1000000.0;
     double longest_time = 0.0;
-    //okay
+
     for (int i=0; i<number_of_tests; i++) {
         struct timespec start, end;
         clock_gettime(CLOCK_REALTIME, &start);
@@ -32,4 +37,7 @@ void small_time_test(void) {
     printf("Time average is %f nanoseconds\n", total_time / number_of_tests);
     printf("Shortest time is %f nanoseconds\n", shortest_time);
     printf("Longest time is %f nanoseconds\n", longest_time);
+
+
+    printf("\n\n");
 }

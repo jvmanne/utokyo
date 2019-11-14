@@ -1,17 +1,15 @@
 #include "clock_test.h"
-#include "multiplication_test.h"
-#include <stdio.h>
+#include "multiplication_basic_test.h"
+#include "multiplication_tiling_test.h"
+#include <stdlib.h>
+#include <time.h>
 
 int main(void) {
-    printf("****************************\n");
-    printf("EMPTY CODE TEST\n");
-    printf("****************************\n\n");
-    small_time_test();
+    srand(time(0));
 
-    printf("\n\n****************************\n");
-    printf("BASIC MULTIPLICATION TEST\n");
-    printf("****************************\n\n");
-    multiplication_test();
+    small_time_test();
+    multiplication_basic_test();
+    multiplication_tiling_test();
 
     return 0;
 }

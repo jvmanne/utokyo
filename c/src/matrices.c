@@ -1,17 +1,63 @@
 #include "matrices.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-int A[4][3] = {
-        {3, 6, 7},
-        {5, -3, 0},
-        {2, 7, 8},
-        {1, 9, 2}
-};
-int B[3][2] = {
-        {1, 1},
-        {2, 1},
-        {3, -3}
-};
-int C[4][2];
-int a_row = 4;
-int b_col = 2;
-int b_row = 3;
+int A[256][256];
+int B[256][256];
+int C[256][256];
+int a_row = 256;
+int b_col = 256;
+int b_row = 256;
+
+void generate_matrices(void) {
+    for (int i=0; i<a_row; i++) {
+        for (int j=0; j<b_row; j++) {
+            A[i][j] = rand()%100;
+        }
+    }
+    for (int i=0; i<b_row; i++) {
+        for (int j=0; j<b_col; j++) {
+            B[i][j] = rand()%100;
+        }
+    }
+}
+
+void print_result(void) {
+    printf("Result matrix:\n");
+    for (int i=0; i<a_row; i++)
+    {
+        for(int j=0; j<b_col; j++)
+        {
+            printf("%d     ", C[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void print_A(void) {
+    printf("Matrix A:\n");
+    for (int i=0; i<a_row; i++)
+    {
+        for(int j=0; j<b_row; j++)
+        {
+            printf("%d     ", A[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
+
+void print_B(void) {
+    printf("Matrix B:\n");
+    for (int i=0; i<b_row; i++)
+    {
+        for(int j=0; j<b_col; j++)
+        {
+            printf("%d     ", B[i][j]);
+        }
+        printf("\n");
+    }
+    printf("\n");
+}

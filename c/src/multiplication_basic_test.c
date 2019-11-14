@@ -1,29 +1,24 @@
-#include "multiplication_test.h"
+#include "multiplication_basic_test.h"
 #include "matrices.h"
 #include "multiplication_basic.h"
 #include <stdio.h>
 #include <time.h>
 
-int number_of_tests = 100000;
+
 // bigger matrices
 // flops
 // random matrices
 
-void print_result(void) {
-    printf("Result matrix:\n");
-    for (int i=0; i<a_row; i++)
-    {
-        for(int j=0; j<b_col; j++)
-        {
-            printf("%d     ", C[i][j]);
-        }
-        printf("\n");
-    }
-}
+void multiplication_basic_test(void) {
+    printf("****************************\n");
+    printf("MULTIPLICATION BASIC TEST\n");
+    printf("****************************\n\n");
 
-void multiplication_test(void) {
+
+    int number_of_tests = 10;
+    generate_matrices();
+
     multiplication_basic_1();
-    print_result();
 
     printf("Basic multiplication 1 - five calculations:\n");
     for (int i = 0; i<5; i++) {
@@ -85,4 +80,7 @@ void multiplication_test(void) {
     }
     clock_gettime(CLOCK_REALTIME, &end6);
     printf("Basic 6 - Time average is %ld nanoseconds\n", (end6.tv_nsec - start6.tv_nsec) / number_of_tests);
+
+
+    printf("\n\n");
 }
