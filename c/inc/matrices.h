@@ -1,6 +1,7 @@
 #ifndef MATRICES_H
     #define MATRICES_H
     void generate_matrices(void);
+    void clear_result(void);
     void print_result(void);
     void print_A(void);
     void print_B(void);
