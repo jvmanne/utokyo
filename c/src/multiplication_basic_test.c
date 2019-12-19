@@ -4,11 +4,6 @@
 #include <stdio.h>
 #include <time.h>
 
-
-// bigger matrices
-// flops
-// random matrices
-
 void multiplication_basic_test(void) {
     printf("**************************************\n");
     printf("MULTIPLICATION BASIC TEST\n");
@@ -18,7 +13,7 @@ void multiplication_basic_test(void) {
     int number_of_tests = 10;
     double billion = 1000000000.0;
     double million = 1000000.0;
-    generate_matrices();
+    generate_matrices(256);
 
     multiplication_basic_1();
 
@@ -28,8 +23,8 @@ void multiplication_basic_test(void) {
         clock_gettime(CLOCK_REALTIME, &start);
         multiplication_basic_1();
         clock_gettime(CLOCK_REALTIME, &end);
-        double time_spent = ((end.tv_sec - start.tv_sec)*billion + (end.tv_nsec - start.tv_nsec))/million;
-        printf("Time elapsed is %f milliseconds\n", time_spent);
+        double current_time = ((end.tv_sec - start.tv_sec)*billion + (end.tv_nsec - start.tv_nsec))/million;
+        printf("Time elapsed is %f milliseconds\n", current_time);
     }
 
 
@@ -88,6 +83,8 @@ void multiplication_basic_test(void) {
     clock_gettime(CLOCK_REALTIME, &end6);
     double time_avr_6 = ((end6.tv_sec - start6.tv_sec)*billion + (end6.tv_nsec - start6.tv_nsec))/million / number_of_tests;
     printf("Basic 6 - Time average is %f milliseconds\n", time_avr_6);
+
+    free_matrices();
 
 
     printf("\n\n");
