@@ -10,10 +10,12 @@ void multiplication_basic_test(void) {
     printf("**************************************\n\n");
 
 
+    int matrix_size = 256;
     int number_of_tests = 10;
     double billion = 1000000000.0;
     double million = 1000000.0;
-    generate_matrices(256);
+    generate_matrices(matrix_size);
+    printf("Matrix size: %d\n\n", matrix_size);
 
     multiplication_basic_1();
 

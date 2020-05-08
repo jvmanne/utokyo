@@ -30,10 +30,10 @@ void multiplication_basic_tiling_test(void) {
     printf("Basic 2 - Time average is %f milliseconds\n\n", time_avr_basic);
 
 
-    int number_of_tests_tiling = 3;
+    int number_of_tests_tiling = 2;
     int block_start = matrix_size / 4;
     int block_end = matrix_size / 2;
-    int block_increase = 32;
+    int block_increase = 16;
     int optimal_block_size = 0;
     double shortest_time = 1000000.0;
     printf("Multiplication loop tiling - find optimal block size with %d calculations for each test:\n", number_of_tests_tiling);

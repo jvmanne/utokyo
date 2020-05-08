@@ -18,6 +18,7 @@ void multiplication_tiling_outer_test(void) {
     int block_end = matrix_size;
     int block_increase = 1;
     generate_matrices(matrix_size);
+    printf("Matrix size: %d\n\n", matrix_size);
 
 
     printf("Multiplication loop tiling 1-2 to 6-2 - find optimal block size with %d calculations for each test:\n", number_of_tests);
