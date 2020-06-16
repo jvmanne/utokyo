@@ -8,6 +8,7 @@ venv/
 c/bin/*
 c/obj/*
 c/out/*
+c/plot/*.png
 c/cmake-build-debug/
 c/CMakeLists.txt
 

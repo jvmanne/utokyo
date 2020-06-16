@@ -12,14 +12,17 @@ void flops_basic_test() {
 
 
     double billion = 1000000000.0;
-    int matrix_size_start = 128;
+    int matrix_size_start = 64;
     int matrix_size_end = 2048;
-    int matrix_size_increase = 64;
+    int matrix_size_increase = 8;
 
     long double biggest_flops = 0.0;
     int optimal_matrix_size = 0;
 
-    printf("Finding biggest flops with basic multiplication:\n");
+    FILE *fp = fopen("out/flops_basic_test.txt", "w");
+    fprintf(fp, "{");
+
+    printf("Find FLOPS with different matrix sizes - Basic multiplication:\n");
 
     for (int matrix_size=matrix_size_start; matrix_size<=matrix_size_end; matrix_size+=matrix_size_increase) {
         generate_matrices(matrix_size);
@@ -34,12 +37,15 @@ void flops_basic_test() {
             biggest_flops = current_flops;
             optimal_matrix_size = matrix_size;
         }
-        printf("Flops %Lf billion - Matrix size %d\n", current_flops, matrix_size);
+        fprintf(fp, "\"%d\":%Lf,", matrix_size, current_flops);
+        printf("%Lf G FLOPS - Matrix size %d\n", current_flops, matrix_size);
 
         free_matrices();
     }
-    printf("Biggest flops %Lf billion - Matrix size %d\n", biggest_flops, optimal_matrix_size);
+    printf("Best case: %Lf G FLOPS - Matrix size %d\n", biggest_flops, optimal_matrix_size);
 
+    fprintf(fp, "\"end\":0}");
+    fclose(fp);
 
     printf("\n\n");
 }

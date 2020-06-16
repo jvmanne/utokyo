@@ -12,22 +12,25 @@ void flops_tiling_test() {
 
 
     double billion = 1000000000.0;
-    int matrix_size_start = 128;
-    int matrix_size_end = 1792;
-    int matrix_size_increase = 128;
+    int matrix_size_start = 64;
+    int matrix_size_end = 2048;
+    int matrix_size_increase = 8;
 
     long double biggest_flops = 0.0;
     int optimal_matrix_size = 0;
     int optimal_block_size = 0;
 
-    printf("Finding biggest flops with loop tiling:\n");
+    FILE *fp = fopen("out/flops_tiling_test.txt", "w");
+    fprintf(fp, "{");
+
+    printf("Find FLOPS with different matrix sizes and block sizes - Loop tiling:\n");
 
     for (int matrix_size=matrix_size_start; matrix_size<=matrix_size_end; matrix_size+=matrix_size_increase) {
         generate_matrices(matrix_size);
 
         int block_size_start = matrix_size_start / 2;
         int block_size_end = matrix_size / 2;
-        int block_increase = 32;
+        int block_increase = 8;
         long double sub_biggest_flops = 0.0;
         int sub_optimal_block_size = 0;
 
@@ -49,12 +52,15 @@ void flops_tiling_test() {
             }
             // printf("Flops %Lf billion - Matrix size %d - Block size %d\n", current_flops, matrix_size, block_size);
         }
-        printf("Flops %Lf billion - Matrix size %d - Optimal block size %d\n", sub_biggest_flops, matrix_size, sub_optimal_block_size);
+        fprintf(fp, "\"%d\":{\"flops\":%Lf,\"opt_block_size\":%d},", matrix_size, sub_biggest_flops, sub_optimal_block_size);
+        printf("%Lf G FLOPS - Matrix size %d - Optimal block size %d\n", sub_biggest_flops, matrix_size, sub_optimal_block_size);
 
         free_matrices();
     }
-    printf("Biggest flops %Lf billion - Matrix size %d - Optimal block size %d\n", biggest_flops, optimal_matrix_size, optimal_block_size);
+    printf("Best case: %Lf G FLOPS - Matrix size %d - Optimal block size %d\n", biggest_flops, optimal_matrix_size, optimal_block_size);
 
+    fprintf(fp, "\"end\":0}");
+    fclose(fp);
 
     printf("\n\n");
 }

@@ -4,6 +4,8 @@ BINDIR = bin
 INCDIR = inc
 SRCDIR = src
 OBJDIR = obj
+OUTDIR = out
+PLTDIR = plot
 
 CC = gcc
 INCL = -I$(INCDIR)
@@ -22,4 +24,4 @@ run:
 	./$(BINDIR)/$(EXEC)
 
 clean:
-	rm -f $(OBJDIR)/*.o $(BINDIR)/*$(EXEC) core *~
+	rm -f $(OBJDIR)/*.o $(BINDIR)/*$(EXEC) $(OUTDIR)/*.txt $(PLTDIR)/*.png  core *~
